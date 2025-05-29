@@ -16,6 +16,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import dev.gabrielequa.jwttemplate.filter.JwtRequestFilter;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 import dev.gabrielequa.jwttemplate.service.UserDetailsServiceImpl;
 
 @Configuration
@@ -48,17 +50,17 @@ public class SecurityConfig {
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
-            .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/test/public").permitAll()
-                .requestMatchers("/h2-console/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        
+        http.cors(withDefaults()).csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(authz -> authz
+                                .requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers("/api/test/public").permitAll()
+                                .requestMatchers("/h2-console/**").permitAll()
+                                .anyRequest().authenticated()
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
         // Enable H2 console (remove in production)
-        http.headers().frameOptions().sameOrigin();
+        http.headers(headers -> headers.frameOptions().sameOrigin());
         
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

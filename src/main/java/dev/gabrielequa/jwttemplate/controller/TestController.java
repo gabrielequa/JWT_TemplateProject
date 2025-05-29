@@ -1,13 +1,26 @@
 package dev.gabrielequa.jwttemplate.controller;
 
+import java.util.List;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.gabrielequa.jwttemplate.models.User;
+import dev.gabrielequa.jwttemplate.repository.UserRepository;
+
+
+
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
+
+    private final UserRepository userRepository;
+
+    public TestController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
     
     @GetMapping("/public")
     public String publicEndpoint() {
@@ -23,4 +36,10 @@ public class TestController {
     public String userInfo(Authentication authentication) {
         return "User info: " + authentication.getName() + " - Authorities: " + authentication.getAuthorities();
     }
+
+    @GetMapping("/all-users")
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+    
 }
