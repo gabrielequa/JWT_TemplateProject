@@ -2,7 +2,6 @@ package dev.gabrielequa.jwttemplate.controller;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,13 +34,13 @@ public class TestController {
     
     @GetMapping("/user")
     public String userInfo(Authentication authentication) {
-        ResponseEntity.ok("Ciao, " + authentication.getName() + "! Ecco le tue info:");
+        System.out.println("Ciao, " + authentication.getName() + "! Ecco le tue info:");
         return "User info: " + authentication.getName() + " - Authorities: " + authentication.getAuthorities();
     }
 
     @GetMapping("/all-users")
     public List<User> getAllUsers(Authentication authentication) {
-        ResponseEntity.ok("Ciao, " + authentication.getName() + "! Ecco tutti gli utenti registrati:");
+        System.out.println("Ciao, " + authentication.getName() + "! Ecco tutti gli utenti registrati:");
         return userRepository.findAll();
     }
     
