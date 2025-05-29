@@ -30,5 +30,16 @@ public class DataLoader implements CommandLineRunner {
             userRepository.save(testUser);
             System.out.println("Test user created - Username: testuser, Password: password123");
         }
+
+        // Create an admin user if it doesn't exist
+        if (!userRepository.existsByUsername("admin")) {
+            User adminUser = new User(
+                "admin",
+                passwordEncoder.encode("password123"),
+                "admin@example.com"
+                );
+            userRepository.save(adminUser);
+            
+        }
     }
 }

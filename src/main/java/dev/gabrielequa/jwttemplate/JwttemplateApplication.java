@@ -22,6 +22,9 @@ public class JwttemplateApplication {
         System.out.println("\nTest User Credentials:");
         System.out.println("Username: testuser");
         System.out.println("Password: password123");
+        System.out.println("\nAdmin User Credentials:");
+        System.out.println("Username: admin");
+        System.out.println("Password: password123");
         System.out.println("===============================================\n");
 	}
 

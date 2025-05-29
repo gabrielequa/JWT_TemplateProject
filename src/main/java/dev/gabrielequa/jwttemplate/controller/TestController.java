@@ -2,6 +2,7 @@ package dev.gabrielequa.jwttemplate.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,21 +25,23 @@ public class TestController {
     
     @GetMapping("/public")
     public String publicEndpoint() {
-        return "This is a public endpoint - no authentication required!";
+        return "Endpoint pubblico, accessibile a tutti!";
     }
     
     @GetMapping("/protected")
     public String protectedEndpoint(Authentication authentication) {
-        return "This is a protected endpoint. Welcome, " + authentication.getName() + "!";
+        return "Endpoint protetto, benvenuto " + authentication.getName() + "!";
     }
     
     @GetMapping("/user")
     public String userInfo(Authentication authentication) {
+        ResponseEntity.ok("Ciao, " + authentication.getName() + "! Ecco le tue info:");
         return "User info: " + authentication.getName() + " - Authorities: " + authentication.getAuthorities();
     }
 
     @GetMapping("/all-users")
-    public List<User> getAllUsers() {
+    public List<User> getAllUsers(Authentication authentication) {
+        ResponseEntity.ok("Ciao, " + authentication.getName() + "! Ecco tutti gli utenti registrati:");
         return userRepository.findAll();
     }
     
