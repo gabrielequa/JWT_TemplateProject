@@ -35,7 +35,12 @@ Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
 GET <http://localhost:8080/api/test/user>
 Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
 
-## 6. Refresh access token using refresh token
+## 6. Get all users info (requires valid access token)
+
+GET <http://localhost:8080/api/test/all-users>
+Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+
+## 7. Refresh access token using refresh token
 
 POST <http://localhost:8080/api/auth/refresh>
 Content-Type: application/json
@@ -44,7 +49,7 @@ Content-Type: application/json
   "refreshToken": "YOUR_REFRESH_TOKEN_HERE"
 }
 
-## 7. Logout (invalidates refresh token)
+## 8. Logout (invalidates refresh token)
 
 POST <http://localhost:8080/api/auth/logout>
 Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
