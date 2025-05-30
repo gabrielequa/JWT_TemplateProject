@@ -29,7 +29,6 @@ public class User implements UserDetails {
     private boolean accountNonLocked = true;
     private boolean credentialsNonExpired = true;
     
-    // Constructors
     public User() {}
     
     public User(String username, String password, String email) {
@@ -38,7 +37,7 @@ public class User implements UserDetails {
         this.email = email;
     }
     
-    // UserDetails implementation
+    // implementazione dei metodi di UserDetails
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.emptyList();

@@ -57,7 +57,7 @@ public class SecurityConfig {
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         
-        // Enable H2 console (remove in production)
+        // Abilita console h2
         http.headers().frameOptions().sameOrigin();
         
         http.authenticationProvider(authenticationProvider());

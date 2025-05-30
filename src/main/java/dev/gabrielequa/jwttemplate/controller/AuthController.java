@@ -26,7 +26,7 @@ public class AuthController {
             JwtResponse response = authService.authenticate(authRequest);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+            return ResponseEntity.badRequest().body("Errore: " + e.getMessage());
         }
     }
     
@@ -34,9 +34,9 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
         try {
             authService.register(registerRequest);
-            return ResponseEntity.ok("User registered successfully!");
+            return ResponseEntity.ok("Utente registrato correttamente");
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+            return ResponseEntity.badRequest().body("Errore: " + e.getMessage());
         }
     }
     
@@ -46,7 +46,7 @@ public class AuthController {
             JwtResponse response = authService.refreshToken(request);
             return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+            return ResponseEntity.badRequest().body("Errore: " + e.getMessage());
         }
     }
     
@@ -54,9 +54,9 @@ public class AuthController {
     public ResponseEntity<?> logout(Authentication authentication) {
         try {
             authService.logout(authentication.getName());
-            return ResponseEntity.ok("Logged out successfully!");
+            return ResponseEntity.ok("Logout effettuato con successo");
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+            return ResponseEntity.badRequest().body("Errore: " + e.getMessage());
         }
     }
 }

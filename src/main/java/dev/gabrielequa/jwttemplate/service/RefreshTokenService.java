@@ -33,9 +33,9 @@ public class RefreshTokenService {
         RefreshToken refreshToken = new RefreshToken();
         
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
         
-        // Delete existing refresh token for user
+        // Elimina il refresh token corrente per l'utente, se esiste
         refreshTokenRepository.findByUser(user)
                 .ifPresent(refreshTokenRepository::delete);
         
@@ -50,7 +50,7 @@ public class RefreshTokenService {
     public RefreshToken verifyExpiration(RefreshToken token) {
         if (token.isExpired()) {
             refreshTokenRepository.delete(token);
-            throw new RuntimeException("Refresh token was expired. Please make a new signin request");
+            throw new RuntimeException("Il refresh token è scaduto. Fai una nuova richiesta di accesso.");
         }
         return token;
     }
@@ -58,7 +58,7 @@ public class RefreshTokenService {
     @Transactional
     public void deleteByUserId(Long userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
         refreshTokenRepository.deleteByUser(user);
     }
 }

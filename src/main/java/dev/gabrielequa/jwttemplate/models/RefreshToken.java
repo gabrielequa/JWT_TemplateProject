@@ -21,7 +21,6 @@ public class RefreshToken {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
     
-    // Constructors
     public RefreshToken() {}
     
     public RefreshToken(String token, LocalDateTime expiryDate, User user) {
@@ -30,7 +29,7 @@ public class RefreshToken {
         this.user = user;
     }
     
-    // Helper method to check if token is expired
+    // Controlla se il token è scaduto
     public boolean isExpired() {
         return LocalDateTime.now().isAfter(this.expiryDate);
     }

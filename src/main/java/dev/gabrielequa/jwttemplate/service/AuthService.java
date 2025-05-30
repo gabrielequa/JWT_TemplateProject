@@ -46,14 +46,14 @@ public class AuthService {
                     authRequest.getUsername(), authRequest.getPassword())
             );
         } catch (BadCredentialsException e) {
-            throw new Exception("Invalid credentials", e);
+            throw new Exception("Credenziali invalide", e);
         }
         
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getUsername());
         final String accessToken = jwtUtil.generateAccessToken(userDetails);
         
         User user = userRepository.findByUsername(authRequest.getUsername())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
         
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(user.getId());
         
@@ -74,16 +74,16 @@ public class AuthService {
                     
                     return new JwtResponse(accessToken, newRefreshToken.getToken());
                 })
-                .orElseThrow(() -> new RuntimeException("Refresh token is not in database!"));
+                .orElseThrow(() -> new RuntimeException("Il refresh token non è nel database!"));
     }
     
     public void register(RegisterRequest registerRequest) {
         if (userRepository.existsByUsername(registerRequest.getUsername())) {
-            throw new RuntimeException("Username is already taken!");
+            throw new RuntimeException("Username già in uso!");
         }
         
         if (userRepository.existsByEmail(registerRequest.getEmail())) {
-            throw new RuntimeException("Email is already in use!");
+            throw new RuntimeException("Email già in uso!");
         }
         
         User user = new User(
@@ -97,7 +97,7 @@ public class AuthService {
     
     public void logout(String username) {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
         refreshTokenService.deleteByUserId(user.getId());
     }
 }

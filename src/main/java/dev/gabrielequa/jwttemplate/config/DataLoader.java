@@ -20,18 +20,18 @@ public class DataLoader implements CommandLineRunner {
     
     @Override
     public void run(String... args) throws Exception {
-        // Create a test user if it doesn't exist
+        // Crea un utente di test se non esiste già
         if (!userRepository.existsByUsername("testuser")) {
             User testUser = new User(
                 "testuser",
                 passwordEncoder.encode("password123"),
-                "test@example.com"
+                "test@ciao.com"
             );
             userRepository.save(testUser);
-            System.out.println("Test user created - Username: testuser, Password: password123");
+            System.out.println("Utente Test creato - Username: testuser, Password: password123");
         }
 
-        // Create an admin user if it doesn't exist
+        // Crea un utente admin se non esiste già
         if (!userRepository.existsByUsername("admin")) {
             User adminUser = new User(
                 "admin",
@@ -39,6 +39,7 @@ public class DataLoader implements CommandLineRunner {
                 "admin@example.com"
                 );
             userRepository.save(adminUser);
+            System.out.println("Utente Admin creato - Username: admin, Password: password123");
             
         }
     }

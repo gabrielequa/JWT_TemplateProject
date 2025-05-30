@@ -24,17 +24,17 @@ public class TestController {
     
     @GetMapping("/public")
     public String publicEndpoint() {
-        return "Endpoint pubblico, accessibile a tutti!";
+        return "Endpoint pubblico, accessibile a tutti";
     }
     
     @GetMapping("/protected")
     public String protectedEndpoint(Authentication authentication) {
-        return "Endpoint protetto, benvenuto " + authentication.getName() + "!";
+        return "Endpoint protetto, benvenuto " + authentication.getName();
     }
     
     @GetMapping("/user")
     public String userInfo(Authentication authentication) {
-        System.out.println("Ciao, " + authentication.getName() + "! Ecco le tue info:");
+        System.out.println("Ciao, " + authentication.getName() + ", ecco le tue info:");
         return "User info: " + authentication.getName() + " - Authorities: " + authentication.getAuthorities();
     }
 
