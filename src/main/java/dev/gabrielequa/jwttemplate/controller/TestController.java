@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.gabrielequa.jwttemplate.model.User;
 import dev.gabrielequa.jwttemplate.repository.UserRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 
 @RestController
 @RequestMapping("/api/test")
+@SecurityRequirement(name = "bearerAuth") // <-- Abilita l'autenticazione per Swagger
 public class TestController {
 
     private final UserRepository userRepository;

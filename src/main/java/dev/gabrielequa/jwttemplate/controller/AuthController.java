@@ -11,6 +11,7 @@ import dev.gabrielequa.jwttemplate.dto.JwtResponse;
 import dev.gabrielequa.jwttemplate.dto.RefreshTokenRequest;
 import dev.gabrielequa.jwttemplate.dto.RegisterRequest;
 import dev.gabrielequa.jwttemplate.service.AuthService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -51,6 +52,7 @@ public class AuthController {
     }
     
     @PostMapping("/logout")
+    @SecurityRequirement(name = "bearerAuth") // <-- Abilita l'autenticazione per Swagger
     public ResponseEntity<?> logout(Authentication authentication) {
         try {
             authService.logout(authentication.getName());

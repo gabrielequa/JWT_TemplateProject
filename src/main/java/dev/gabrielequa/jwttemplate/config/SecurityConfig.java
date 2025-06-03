@@ -17,9 +17,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import dev.gabrielequa.jwttemplate.filter.JwtRequestFilter;
 import dev.gabrielequa.jwttemplate.service.UserDetailsServiceImpl;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 @Configuration
 @EnableWebSecurity
+// Sicurezza per Swagger-ui
+@SecurityScheme(
+    name = "bearerAuth",
+    type = SecuritySchemeType.HTTP,
+    scheme = "bearer",
+    bearerFormat = "JWT"
+)
 public class SecurityConfig {
     
     @Autowired
