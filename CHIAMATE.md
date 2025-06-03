@@ -1,6 +1,6 @@
 # Chiamate
 
-## 1. Register new user
+## 1. Registra un nuovo utente
 
 POST <http://localhost:8080/api/auth/register>
 Content-Type: application/json
@@ -11,7 +11,7 @@ Content-Type: application/json
   "password": "password123"
 }
 
-## 2. Login with test user
+## 2. Login con un utente
 
 POST <http://localhost:8080/api/auth/login>
 Content-Type: application/json
@@ -21,42 +21,42 @@ Content-Type: application/json
   "password": "password123"
 }
 
-## 3. Access public endpoint (no auth required)
+## 3. Accesso endpoint publico (non è necessaria autenticazione)
 
 GET <http://localhost:8080/api/test/public>
 
-## 4. Access protected endpoint (requires valid access token)
+## 4. Accesso endpoint protetto (è necessaria autenticazione)
 
 GET <http://localhost:8080/api/test/protected>
-Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+Authorization: Bearer ACCESS_TOKEN_HERE
 
-## 5. Get user info (requires valid access token)
+## 5. Restituisce info utente (richiede access token valido)
 
 GET <http://localhost:8080/api/test/user>
-Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+Authorization: Bearer ACCESS_TOKEN_HERE
 
-## 6. Get all users info (requires valid access token)
+## 6. Restituisce le info di tutti gli utenti (richiede access token valido)
 
 GET <http://localhost:8080/api/test/all-users>
-Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+Authorization: Bearer ACCESS_TOKEN_HERE
 
-## 7. Refresh access token using refresh token
+## 7. Refresh access token usando il refresh token
 
 POST <http://localhost:8080/api/auth/refresh>
 Content-Type: application/json
 
 {
-  "refreshToken": "YOUR_REFRESH_TOKEN_HERE"
+  "refreshToken": "REFRESH_TOKEN_HERE"
 }
 
-## 8. Logout (invalidates refresh token)
+## 8. Logout (invalida il refresh token)
 
 POST <http://localhost:8080/api/auth/logout>
-Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+Authorization: Bearer ACCESS_TOKEN_HERE
 
-## Example cURL commands
+## Esempi chiamate cURL
 
-### Register
+### Registrazione
 
 curl -X POST <http://localhost:8080/api/auth/register> \
   -H "Content-Type: application/json" \
@@ -68,14 +68,14 @@ curl -X POST <http://localhost:8080/api/auth/login> \
   -H "Content-Type: application/json" \
   -d '{"username":"testuser","password":"password123"}'
 
-### Access protected endpoint
+### Accesso endpoint protetto
 
 curl -X GET <http://localhost:8080/api/test/protected> \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+  -H "Authorization: Bearer ACCESS_TOKEN"
 
 ### Refresh token
 
 curl -X POST <http://localhost:8080/api/auth/refresh> \
   -H "Content-Type: application/json" \
-  -d '{"refreshToken":"YOUR_REFRESH_TOKEN"}'
+  -d '{"refreshToken":"REFRESH_TOKEN"}'
   
