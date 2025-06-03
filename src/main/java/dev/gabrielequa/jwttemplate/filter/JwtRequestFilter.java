@@ -1,7 +1,7 @@
 package dev.gabrielequa.jwttemplate.filter;
 
 import dev.gabrielequa.jwttemplate.service.UserDetailsServiceImpl;
-import dev.gabrielequa.jwttemplate.utils.JwtUtil;
+import dev.gabrielequa.jwttemplate.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

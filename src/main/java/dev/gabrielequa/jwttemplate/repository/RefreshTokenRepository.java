@@ -1,9 +1,10 @@
 package dev.gabrielequa.jwttemplate.repository;
 
-import dev.gabrielequa.jwttemplate.models.User;
-import dev.gabrielequa.jwttemplate.models.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import dev.gabrielequa.jwttemplate.model.RefreshToken;
+import dev.gabrielequa.jwttemplate.model.User;
 
 import java.util.Optional;
 

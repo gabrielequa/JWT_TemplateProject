@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import dev.gabrielequa.jwttemplate.models.User;
+import dev.gabrielequa.jwttemplate.model.User;
 import dev.gabrielequa.jwttemplate.repository.UserRepository;
 
 @Component

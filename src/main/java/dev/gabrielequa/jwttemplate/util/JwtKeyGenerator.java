@@ -1,4 +1,4 @@
-package dev.gabrielequa.jwttemplate.utils;
+package dev.gabrielequa.jwttemplate.util;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;

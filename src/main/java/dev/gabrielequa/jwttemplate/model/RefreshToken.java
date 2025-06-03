@@ -1,4 +1,4 @@
-package dev.gabrielequa.jwttemplate.models;
+package dev.gabrielequa.jwttemplate.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

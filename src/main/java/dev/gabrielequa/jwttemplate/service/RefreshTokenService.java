@@ -1,8 +1,8 @@
 package dev.gabrielequa.jwttemplate.service;
 
-import dev.gabrielequa.jwttemplate.models.User;
 import dev.gabrielequa.jwttemplate.repository.UserRepository;
-import dev.gabrielequa.jwttemplate.models.RefreshToken;
+import dev.gabrielequa.jwttemplate.model.RefreshToken;
+import dev.gabrielequa.jwttemplate.model.User;
 import dev.gabrielequa.jwttemplate.repository.RefreshTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

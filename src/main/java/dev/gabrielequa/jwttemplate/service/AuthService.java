@@ -13,10 +13,10 @@ import dev.gabrielequa.jwttemplate.dto.JwtRequest;
 import dev.gabrielequa.jwttemplate.dto.JwtResponse;
 import dev.gabrielequa.jwttemplate.dto.RefreshTokenRequest;
 import dev.gabrielequa.jwttemplate.dto.RegisterRequest;
-import dev.gabrielequa.jwttemplate.models.RefreshToken;
-import dev.gabrielequa.jwttemplate.models.User;
+import dev.gabrielequa.jwttemplate.model.RefreshToken;
+import dev.gabrielequa.jwttemplate.model.User;
 import dev.gabrielequa.jwttemplate.repository.UserRepository;
-import dev.gabrielequa.jwttemplate.utils.JwtUtil;
+import dev.gabrielequa.jwttemplate.util.JwtUtil;
 
 @Service
 public class AuthService {
